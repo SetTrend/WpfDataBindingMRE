@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<IsPublishable>False</IsPublishable>
+		<NeutralLanguage>en-US</NeutralLanguage>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Icons\close\disabled.png" />
+		<Resource Include="Icons\close\enabled.png" />
+		<Resource Include="Icons\delete\disabled.png" />
+		<Resource Include="Icons\delete\enabled.png" />
+		<Resource Include="Icons\encrypt\disabled.png" />
+		<Resource Include="Icons\encrypt\enabled.png" />
+		<Resource Include="Icons\json\disabled.png" />
+		<Resource Include="Icons\json\enabled.png" />
+		<Resource Include="Icons\open\disabled.png" />
+		<Resource Include="Icons\open\enabled.png" />
+		<Resource Include="Icons\run\disabled.png" />
+		<Resource Include="Icons\run\enabled.png" />
+		<Resource Include="Icons\saveAs\disabled.png" />
+		<Resource Include="Icons\saveAs\enabled.png" />
+		<Resource Include="Icons\save\disabled.png" />
+		<Resource Include="Icons\save\enabled.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Code\Commands\Resources\Modifiers.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Modifiers.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Code\Preferences\Resources\Messages.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Messages.resx</DependentUpon>
+		</Compile>
+		<Compile Update="WpfWindows\Main\Resources\MenuItems.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>MenuItems.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Code\Commands\Resources\Modifiers.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Modifiers.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Code\Preferences\Resources\Messages.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Messages.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="WpfWindows\Main\Resources\MenuItems.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>MenuItems.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+</Project>

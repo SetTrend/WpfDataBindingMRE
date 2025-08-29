@@ -1,0 +1,26 @@
+root = true
+
+# All files
+[*]
+indent_style = tab
+indent_size = 2
+
+[*.{cs,vb}]
+
+# Disable "prefer primary constructor" warning
+dotnet_diagnostic.IDE0290.severity = none
+dotnet_diagnostic.SYSLIB1045.severity = none
+
+### Verwenden Sie „GeneratedRegexAttribute“, um die Implementierung regulärer Ausdrücke zur Kompilierzeit zu generieren.
+dotnet_diagnostic.SYSLIB1045.severity = none
+
+dotnet_naming_symbols.abstract_class.applicable_kinds = class
+dotnet_naming_symbols.abstract_class.applicable_accessibilities = *
+dotnet_naming_symbols.abstract_class.required_modifiers = abstract
+
+dotnet_naming_style.abstract_class.capitalization = pascal_case
+dotnet_naming_style.abstract_class.required_prefix = _
+
+dotnet_naming_rule.abstract_class.symbols = abstract_class
+dotnet_naming_rule.abstract_class.style = abstract_class
+dotnet_naming_rule.abstract_class.severity = none

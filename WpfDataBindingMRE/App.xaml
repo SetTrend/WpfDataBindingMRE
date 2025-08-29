@@ -1,0 +1,6 @@
+﻿<Application x:Class="WpfDataBindingMRE.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="WpfWindows/Main/MainWindow.xaml"
+						 Startup="Application_Startup"
+						 />

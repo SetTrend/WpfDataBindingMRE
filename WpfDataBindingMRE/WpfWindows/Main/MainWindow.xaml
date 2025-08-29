@@ -1,0 +1,87 @@
+﻿<Window x:Class="WpfDataBindingMRE.WpfWindows.Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cmd="clr-namespace:WpfDataBindingMRE.Code.Commands"
+				xmlns:conv="clr-namespace:WpfDataBindingMRE.Code.Converters"
+				xmlns:mru="clr-namespace:WpfDataBindingMRE.Code.FileMru"
+        mc:Ignorable="d" x:Name="MainWin"
+				Height="450" Width="800" MinHeight="300" MinWidth="500" ResizeMode="CanResizeWithGrip"				
+				Loaded="Window_Loaded"
+				DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+				>
+	<DockPanel>
+		<Menu x:Name="MainMenu" DockPanel.Dock="Top">
+			<MenuItem x:Name="FileMenu" SubmenuOpened="FileMenu_SubmenuOpened">
+				<MenuItem.Resources>
+					<cmd:QuitCommand x:Key="QuitCmd"/>
+				</MenuItem.Resources>
+
+				<MenuItem.CommandBindings>
+					<CommandBinding Command="{StaticResource ResourceKey=QuitCmd}" Executed="AppCloseCommand_Executed"/>
+				</MenuItem.CommandBindings>
+
+				<MenuItem x:Name="FileMenu_ClearInput" IsEnabled="False">
+					<MenuItem.Style>
+						<Style TargetType="MenuItem">
+							<Setter Property="Icon">
+								<Setter.Value>
+									<Image Source="pack://application:,,,/Icons/delete/disabled.png"/>
+								</Setter.Value>
+							</Setter>
+							<Style.Triggers>
+								<Trigger Property="IsEnabled" Value="True">
+									<Trigger.Setters>
+										<Setter Property="Icon">
+											<Setter.Value>
+												<Image Source="pack://application:,,,/Icons/delete/enabled.png"/>
+											</Setter.Value>
+										</Setter>
+									</Trigger.Setters>
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</MenuItem.Style>
+				</MenuItem>
+
+				<Separator x:Name="FileMenu_MruListSeparatur" Visibility="{Binding Path=FileMruList.Count, Converter={x:Static conv:VisibilityCounterConverter.Instance}}"/>
+
+				<MenuItem x:Name="FileMenu_MruList" Visibility="{Binding Path=FileMruList.Count, Converter={x:Static conv:VisibilityCounterConverter.Instance}}">
+					<MenuItem.Resources>
+						<cmd:FileMruCommand x:Key="FileMruCmd"/>
+						<cmd:ClearCommand x:Key="ClearCmd"/>
+						<CollectionViewSource x:Key="MruFiles" Source="{Binding Path=FileMruList}"/>
+					</MenuItem.Resources>
+
+					<MenuItem.CommandBindings>
+						<CommandBinding Command="{StaticResource ResourceKey=FileMruCmd}" Executed="FileMruItem_Executed"/>
+						<CommandBinding Command="{StaticResource ResourceKey=ClearCmd}" Executed="FileMruListClear_Executed"/>
+					</MenuItem.CommandBindings>
+
+					<MenuItem.ItemsSource>
+						<CompositeCollection>
+							<CollectionContainer Collection="{Binding Source={StaticResource ResourceKey=MruFiles}}"/>
+							<Separator/>
+							<MenuItem x:Name="FileMenu_MruList_Delete" Command="{StaticResource ResourceKey=ClearCmd}"/>
+						</CompositeCollection>
+					</MenuItem.ItemsSource>
+
+					<MenuItem.ItemTemplate>
+						<HierarchicalDataTemplate DataType="{x:Type mru:MruItem}">
+							<AccessText Text="{Binding Converter={x:Static conv:MruItemConverter.Instance}}"/>
+						</HierarchicalDataTemplate>
+					</MenuItem.ItemTemplate>
+				</MenuItem>
+
+				<Separator/>
+
+				<MenuItem x:Name="FileMenu_Quit" Command="{StaticResource ResourceKey=QuitCmd}"/>
+			</MenuItem>
+		</Menu>
+
+		<TextBlock Text="DUMMY" FontFamily="Barlow Condensed ExtraBold" FontSize="140" Foreground="DodgerBlue"
+							 HorizontalAlignment="Center" VerticalAlignment="Center"
+							 />
+	</DockPanel>
+</Window>

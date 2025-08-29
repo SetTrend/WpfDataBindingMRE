@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "~Projektmappenelemente", "~Projektmappenelemente", "{7F2F7CE8-4FC7-F3BD-1DA5-E4FB58A6099D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDataBindingMRE", "WpfDataBindingMRE\WpfDataBindingMRE.csproj", "{082814FE-A77B-6052-0AEE-7873E996A70F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".doc", ".doc", "{6F6046AC-B09C-53A9-6837-94FFFCA95423}"
+	ProjectSection(SolutionItems) = preProject
+		.doc\XAML Binding Failures.png = .doc\XAML Binding Failures.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{082814FE-A77B-6052-0AEE-7873E996A70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082814FE-A77B-6052-0AEE-7873E996A70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082814FE-A77B-6052-0AEE-7873E996A70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082814FE-A77B-6052-0AEE-7873E996A70F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6F6046AC-B09C-53A9-6837-94FFFCA95423} = {7F2F7CE8-4FC7-F3BD-1DA5-E4FB58A6099D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22D0EC5A-F888-426E-9540-8CAF06FF7610}
+	EndGlobalSection
+EndGlobal
