@@ -45,13 +45,13 @@
 					</MenuItem.Style>
 				</MenuItem>
 
-				<Separator x:Name="FileMenu_MruListSeparatur" Visibility="{Binding Path=FileMruList.Count, Converter={x:Static conv:VisibilityCounterConverter.Instance}}"/>
+				<Separator x:Name="FileMenu_MruListSeparatur" Visibility="{Binding Path=Settings.Preferences.FileMruList.Count, Converter={x:Static conv:VisibilityCounterConverter.Instance}}"/>
 
-				<MenuItem x:Name="FileMenu_MruList" Visibility="{Binding Path=FileMruList.Count, Converter={x:Static conv:VisibilityCounterConverter.Instance}}">
+				<MenuItem x:Name="FileMenu_MruList" Visibility="{Binding Path=Settings.Preferences.FileMruList.Count, Converter={x:Static conv:VisibilityCounterConverter.Instance}}">
 					<MenuItem.Resources>
 						<cmd:FileMruCommand x:Key="FileMruCmd"/>
 						<cmd:ClearCommand x:Key="ClearCmd"/>
-						<CollectionViewSource x:Key="MruFiles" Source="{Binding Path=FileMruList}"/>
+						<CollectionViewSource x:Key="MruFiles" Source="{Binding Path=Settings.Preferences.FileMruList}"/>
 					</MenuItem.Resources>
 
 					<MenuItem.CommandBindings>
@@ -59,11 +59,24 @@
 						<CommandBinding Command="{StaticResource ResourceKey=ClearCmd}" Executed="FileMruListClear_Executed"/>
 					</MenuItem.CommandBindings>
 
+					<MenuItem.ItemContainerStyle>
+						<Style TargetType="MenuItem">
+							<Setter Property="Command" Value="{StaticResource ResourceKey=FileMruCmd}" />
+						</Style>
+					</MenuItem.ItemContainerStyle>
+
 					<MenuItem.ItemsSource>
 						<CompositeCollection>
 							<CollectionContainer Collection="{Binding Source={StaticResource ResourceKey=MruFiles}}"/>
 							<Separator/>
-							<MenuItem x:Name="FileMenu_MruList_Delete" Command="{StaticResource ResourceKey=ClearCmd}"/>
+							<MenuItem x:Name="FileMenu_MruList_Delete" Command="{StaticResource ResourceKey=ClearCmd}">
+								<MenuItem.Resources>
+									<Style TargetType="MenuItem">
+										<Setter Property="HorizontalContentAlignment" Value="Center"/>
+										<Setter Property="VerticalContentAlignment" Value="Center"/>
+									</Style>
+								</MenuItem.Resources>
+							</MenuItem>
 						</CompositeCollection>
 					</MenuItem.ItemsSource>
 

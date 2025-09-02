@@ -12,10 +12,19 @@ namespace WpfDataBindingMRE.WpfWindows.Main;
 
 public partial class MainWindow : Window
 {
+	public static readonly DependencyProperty SettingsProperty = DependencyProperty.Register("Settings"
+																																																, typeof(FullConfig)
+																																																, typeof(MainWindow)
+																																																);
+
 	/// <summary>
-	///		Gets the applications runtime settings.
+	///		Gets or sets the applications runtime settings.
 	/// </summary>
-	private readonly FullConfig Settings = new FullConfig();
+	public FullConfig Settings
+	{
+		get => (FullConfig)GetValue(SettingsProperty);
+		private init => SetValue(SettingsProperty, value);
+	}
 
 
 
@@ -33,6 +42,8 @@ public partial class MainWindow : Window
 
 	public MainWindow()
 	{
+		Settings = new FullConfig();
+
 		InitializeComponent();
 
 		this.SetMenuItemTexts(MainMenu);
